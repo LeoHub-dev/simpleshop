@@ -100,7 +100,27 @@ class Product_model extends CI_Model {
         $query = $this->db->insert('products',$this); 
 
         return $query;   
-    }
+	}
+	
+	public function getProducts()
+	{
+        $query = $this->db->get('auth_users')->get()->result();
+        
+		return $query;   
+	}
+	
+	public function getProductsByCategory($category)
+    {
+		$this->db->select('*');
+		$this->db->where('id_category',$category);
+        $this->db->from('category_products');
+		$this->db->join('categories', 'category_products.id_category = categories.id', 'left');
+		$this->db->join('products', 'category_products.id_product = products.id', 'left');
+		
+        $query = $this->db->get()->result(); 
+
+        return $query; 
+	}
 	
 	public function getProduct($id)
 	{
