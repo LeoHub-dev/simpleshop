@@ -89,7 +89,7 @@
 					</tr>
 				</tfoot>
 			</table>
-			<button class="btn-block mt-3 mb-3" v-on:click="endShopping()"> Finalizar Compra </button>
+			<button class="btn-block mt-3 mb-3" v-on:click="endShopping()" v-if="shoppingCart.items.length > 0"> Finalizar Compra </button>
 		</form>
 	</div>
 

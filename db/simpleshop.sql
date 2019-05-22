@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2019 a las 04:25:32
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 7.2.5
+-- Servidor: localhost:3306
+-- Tiempo de generación: 21-05-2019 a las 19:50:46
+-- Versión del servidor: 5.6.43-cll-lve
+-- Versión de PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,14 +33,6 @@ CREATE TABLE `cart` (
   `id_product` int(11) NOT NULL,
   `qty` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cart`
---
-
-INSERT INTO `cart` (`id`, `id_product`, `qty`) VALUES
-(4, 1, 8),
-(5, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +69,8 @@ CREATE TABLE `category_products` (
 --
 
 INSERT INTO `category_products` (`id_category`, `id_product`) VALUES
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -96,7 +89,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `content`, `total`) VALUES
-(1, '{\"items\":[{\"id\":\"1\",\"id_product\":\"1\",\"qty\":\"624\",\"name\":\"Counter\",\"image\":null,\"description\":\"Etc etc\",\"price\":\"200\"},{\"id\":\"2\",\"id_product\":\"2\",\"qty\":\"569\",\"name\":\"Pasta\",\"image\":null,\"description\":\"wqrer\",\"price\":\"999\"}],\"total\":693231}', 0);
+(1, '{\"items\":[{\"id\":\"1\",\"id_product\":\"1\",\"qty\":\"624\",\"name\":\"Counter\",\"image\":null,\"description\":\"Etc etc\",\"price\":\"200\"},{\"id\":\"2\",\"id_product\":\"2\",\"qty\":\"569\",\"name\":\"Pasta\",\"image\":null,\"description\":\"wqrer\",\"price\":\"999\"}],\"total\":693231}', 0),
+(2, '{\"items\":[],\"total\":0}', 0);
 
 -- --------------------------------------------------------
 
@@ -163,7 +157,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -175,7 +169,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
