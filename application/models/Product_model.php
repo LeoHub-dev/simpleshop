@@ -97,14 +97,14 @@ class Product_model extends CI_Model {
 
     public function createProduct()
     {
-        $query = $this->db->insert('products',$this); 
+        $query = $this->db->insert('products', $this); 
 
         return $query;   
 	}
 	
 	public function getProducts()
 	{
-        $query = $this->db->get('auth_users')->get()->result();
+        $query = $this->db->get('products')->result();
         
 		return $query;   
 	}
@@ -124,14 +124,16 @@ class Product_model extends CI_Model {
 	
 	public function getProduct($id)
 	{
-        $query = $this->db->get('auth_users', $id)->get()->result();
+		$this->db->where('id',$id);
+
+        $query = $this->db->get('products');
         
-		return $query;   
+		return $query->result_array();   
     }
     
     public function updateProduct($data)
     {
-		$update = $this->db->update('auth_users', $data, $data['id']);
+		$update = $this->db->update('products', $data, $data['id']);
 		
 		if($update){
 			return TRUE;
@@ -140,28 +142,4 @@ class Product_model extends CI_Model {
 			return FALSE;
 		}
     }
-
-	public function isLoggedIn(){
-		
-        header("cache-Control: no-store, no-cache, must-revalidate");
-        header("cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-        header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
-
-        $is_logged_in = $this->session->userdata('logged_in');
-
-        if(!isset($is_logged_in) || $is_logged_in!==TRUE)
-        {
-            return FALSE;
-        }
-
-        return TRUE;
-    }
-
-
-
-
-
-
-	
 }
