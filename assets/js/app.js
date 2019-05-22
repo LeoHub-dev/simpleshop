@@ -51,7 +51,7 @@ var shopProducts = new Vue({
 		},
 		lessItem: function (id_item) {
 			var temp = this.shoppingCart.items[this.shoppingCart.items.findIndex(item => item.id == id_item)];
-			temp.qty = temp.qty - 1;
+			temp.qty = parseInt(temp.qty) - 1;
 			this.shoppingCart.items[this.shoppingCart.items.findIndex(item => item.id == id_item)] = temp;
 			var total = 0;
 			this.shoppingCart.items.forEach(function (item){
@@ -66,9 +66,9 @@ var shopProducts = new Vue({
 				alert('No se ha podido crear la tarea.');
 			});
 		},
-		moreItem: function (id) {
+		moreItem: function (id_item) {
 			var temp = this.shoppingCart.items[this.shoppingCart.items.findIndex(item => item.id == id_item)];
-			temp.qty = temp.qty + 1;
+			temp.qty = parseInt(temp.qty) + 1;
 			this.shoppingCart.items[this.shoppingCart.items.findIndex(item => item.id == id_item)] = temp;
 			var total = 0;
 			this.shoppingCart.items.forEach(function (item){
@@ -76,7 +76,7 @@ var shopProducts = new Vue({
 			})
 			this.shoppingCart.total = total;
 
-			this.$http.get('index.php/shop/addToCart/' + id + '/1').then(function (response) {
+			this.$http.get('index.php/shop/addToCart/' + id_item + '/1').then(function (response) {
 				//this.getShoppingCart();
 			}, function (error) {
 				console.log(error);
