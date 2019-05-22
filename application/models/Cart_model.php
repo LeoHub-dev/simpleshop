@@ -38,7 +38,7 @@ class Cart_model extends CI_Model
 	public function addProductToCart($id, $qty)
 	{
 		if ($query = $this->productIsAdded($id)) {
-			var_dump($query);
+			if($query[0]->qty + $qty == 0){ return; }
 			$this->db->set('qty', $query[0]->qty + $qty);
 			$this->db->where('id', $query[0]->id);
 			$this->db->update('cart');

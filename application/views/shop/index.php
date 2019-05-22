@@ -39,7 +39,7 @@
 							<p class="card-text">{{ product.description }}</p>
 							<hr>
 							<p class="card-text">Precio: {{ product.price }}</p>
-							Cantidad: <input type="number" v-model="product.qty">
+							Cantidad: <input type="number" value="1" v-model="product.qty">
 							<a href="javascript:void(0)" class="btn btn-primary mt-3" v-on:click="addToCart(product.id,product.qty)">Agregar al carrito</a>
 						</div>
 					</div>
